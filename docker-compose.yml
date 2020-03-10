@@ -20,16 +20,13 @@ services:
     links:
       - db
 
-  #nginx:
-    #image: "${CI_REGISTRY_IMAGE-local}/nginx:${CI_COMMIT_SHORT_SHA-local}"
-    #build:
-      #context: .
-      #dockerfile: Dockerfile.nginx
-    #ports:
-      #- "${NGINX_PORT}"
-    #links:
-      #- api
-      #- front
+  nginx:
+    build: nginx
+    ports:
+      - "${NGINX_PORT}"
+    links:
+      - api
+      - front
 
 #volumes:
   #postgres:
