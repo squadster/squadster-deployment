@@ -6,29 +6,32 @@ services:
     volumes:
       - /var/lib/postgresql
     ports:
-      - "${DATABASE_PORT}"
+      - "${DB_PORT}"
+    environment:
+      POSTGRES_DB: "${DB_NAME}"
+      POSTGRES_USER: "${DB_USERNAME}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
 
   front:
     image: "docker.pkg.github.com/$GITHUB_ORGANIZATION/$FRONT_GITHUB_REPO/$FRONT_GITHUB_PACKAGE:$RELEASE_VERSION"
 
   api:
     image: "docker.pkg.github.com/$GITHUB_ORGANIZATION/$API_GITHUB_REPO/$API_GITHUB_PACKAGE:$RELEASE_VERSION"
-    build: .
-    command: bash -c "cron && bundle exec rails s -p 3000 -b '0.0.0.0'"
     links:
       - db
 
-  nginx:
-    image: "${CI_REGISTRY_IMAGE-local}/nginx:${CI_COMMIT_SHORT_SHA-local}"
-    build:
-      context: .
-      dockerfile: Dockerfile.nginx
-    ports:
-      - "${NGINX_PORT}"
-    links:
-      - api
+  #nginx:
+    #image: "${CI_REGISTRY_IMAGE-local}/nginx:${CI_COMMIT_SHORT_SHA-local}"
+    #build:
+      #context: .
+      #dockerfile: Dockerfile.nginx
+    #ports:
+      #- "${NGINX_PORT}"
+    #links:
+      #- api
+      #- front
 
-volumes:
-  postgres:
+#volumes:
+  #postgres:
 
 # TODO: links volumes nginx
