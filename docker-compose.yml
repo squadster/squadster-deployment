@@ -3,8 +3,8 @@ version: '3'
 services:
   db:
     image: postgres:12-alpine
-    volumes:
-      - /var/lib/postgresql
+    #volumes:
+      #- /var/lib/postgresql
     ports:
       - "${DB_PORT}"
     environment:
@@ -23,12 +23,9 @@ services:
   nginx:
     build: nginx
     ports:
-      - "${NGINX_PORT}"
+      - "${NGINX_PORT}:80"
     links:
       - api
       - front
 
-#volumes:
-  #postgres:
-
-# TODO: links volumes nginx
+# TODO: links
