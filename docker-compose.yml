@@ -17,6 +17,7 @@ services:
 
   api:
     image: "docker.pkg.github.com/$GITHUB_ORGANIZATION/$API_GITHUB_REPO/$API_GITHUB_PACKAGE:$RELEASE_VERSION"
+    command: bash -c "bin/squadster start"
     depends_on:
       - db
 
