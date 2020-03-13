@@ -14,7 +14,7 @@ services:
 
   front:
     image: "docker.pkg.github.com/$GITHUB_ORGANIZATION/$FRONT_GITHUB_REPO/$FRONT_GITHUB_PACKAGE:$RELEASE_VERSION"
-    command: bach -c "serve -p 3000 -s ."
+    command: bash -c "serve -p 3000 -s ."
 
   api:
     image: "docker.pkg.github.com/$GITHUB_ORGANIZATION/$API_GITHUB_REPO/$API_GITHUB_PACKAGE:$RELEASE_VERSION"
