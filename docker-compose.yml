@@ -3,7 +3,7 @@ version: '3'
 services:
   db:
     image: postgres:12-alpine
-    volumes: # should be commented when running locally on Linux
+    volumes: # should be commented when running locally
       - /var/lib/postgresql
     ports:
       - "${DB_PORT}"
@@ -19,6 +19,12 @@ services:
   api:
     image: "docker.pkg.github.com/$GITHUB_ORGANIZATION/$API_GITHUB_REPO/$API_GITHUB_PACKAGE:$RELEASE_VERSION"
     command: bash -c "bin/squadster start"
+    depends_on:
+      - db
+
+  bot:
+    image: "docker.pkg.github.com/$GITHUB_ORGANIZATION/$BOT_GITHUB_REPO/$BOT_GITHUB_PACKAGE:$RELEASE_VERSION"
+    command: bash -c "TODO"
     depends_on:
       - db
 
