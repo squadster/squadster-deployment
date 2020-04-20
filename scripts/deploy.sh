@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This script deploys application from github registry to target instance
+
 # execute command on server
 execute() {
   ssh -i $INSTANCE_KEY_FILE $INSTANCE_USER@$INSTANCE_IP -T $@
