@@ -48,4 +48,4 @@ execute "
 "
 
 execute "echo $GITHUB_TOKEN | docker login -u $GITHUB_USER --password-stdin docker.pkg.github.com"
-execute "cd $app_dir && docker-compose down && docker-compose build --parallel --pull && docker-compose up -d --force-recreate"
+execute "cd $app_dir && docker-compose down --rmi all && docker-compose build --parallel --pull && docker-compose up -d --force-recreate"
