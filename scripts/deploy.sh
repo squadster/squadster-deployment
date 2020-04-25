@@ -48,7 +48,7 @@ execute "
 "
 
 # shut down and remove old images
-execute "cd $app_dir && docker-compose down"
+execute "cd $app_dir && docker-compose stop"
 execute "docker rmi -f \$(docker images -a | grep \"release\|bot\|frontend-release\" | awk '{ print \$3 }')"
 # build and run new images
 execute "echo $GITHUB_TOKEN | docker login -u $GITHUB_USER --password-stdin docker.pkg.github.com"
