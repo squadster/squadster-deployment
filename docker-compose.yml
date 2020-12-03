@@ -30,23 +30,6 @@ services:
     depends_on:
       - db
 
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
-    ports:
-      - "${ELASTICSEARCH_PORT}"
-    environment:
-      - "discovery.type=single-node"
-    depends_on:
-      - bot
-
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.2.0
-    ports:
-      - "${KIBANA_PORT}:5601"
-    restart: on-failure
-    depends_on:
-      - elasticsearch
-
   nginx:
     build: nginx
     ports:
