@@ -6,7 +6,7 @@ services:
     volumes: # should be commented when running locally
       - /var/lib/postgresqlrun/secrets
     env_file:
-      - db.env
+      - env.db
     ports:
       - target: 5432
         published: 5432
