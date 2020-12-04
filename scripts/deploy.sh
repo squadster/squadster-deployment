@@ -4,12 +4,12 @@
 
 # execute command on server
 execute() {
-  ssh -i $INSTANCE_KEY_FILE $INSTANCE_USER@$INSTANCE_IP -T $@
+  ssh $INSTANCE_USER@$INSTANCE_IP -T $@
 }
 
 # send file to app directory
 transfer() {
-  scp -r -i $INSTANCE_KEY_FILE $1 $INSTANCE_USER@$INSTANCE_IP:$2
+  scp -r $1 $INSTANCE_USER@$INSTANCE_IP:$2
 }
 
 source .env

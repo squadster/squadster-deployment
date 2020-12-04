@@ -4,4 +4,4 @@
 
 source .env
 
-ssh -i $INSTANCE_KEY_FILE -t $INSTANCE_USER@$INSTANCE_IP "docker exec -it \$(docker ps | grep -o \"production_api_.*\") bin/squadster remote"
+ssh -t $INSTANCE_USER@$INSTANCE_IP "docker exec -it \$(docker ps | grep -o \"production_api_.*\") bin/squadster remote"

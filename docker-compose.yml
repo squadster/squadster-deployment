@@ -19,6 +19,7 @@ services:
   api:
     image: "docker.pkg.github.com/$GITHUB_ORGANIZATION/$API_GITHUB_REPO/$API_GITHUB_PACKAGE:$RELEASE_VERSION"
     command: bash -c "bin/squadster start"
+    restart: on-failure
     depends_on:
       - db
 
@@ -28,6 +29,7 @@ services:
     environment:
       ELASTICSEARCH_HOST: "${ELASTICSEARCH_HOST}"
       ELASTICSEARCH_PORT: "${ELASTICSEARCH_PORT}"
+    restart: on-failure
     depends_on:
       - db
 
