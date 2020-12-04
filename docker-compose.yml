@@ -1,12 +1,18 @@
 version: '3.8'
 
+networks:
+  default:
+    driver: overlay
+
 services:
   db:
     image: postgres:12-alpine
-    volumes: # should be commented when running locally
-      - /var/lib/postgresql
     env_file:
       - .env.db
+    volumes:
+      - /var/lib/postgresql
+    networks:
+      - default
     ports:
       - target: 5432
         published: 5432
@@ -14,6 +20,8 @@ services:
   front:
     image: "docker.pkg.github.com/squadster/squadster-frontend/frontend-release:latest"
     command: bash -c "serve -p 3000 -s ."
+    networks:
+      - default
     deploy:
       restart_policy:
         condition: on-failure
@@ -23,6 +31,8 @@ services:
   api:
     image: "docker.pkg.github.com/squadster/squadster-api/release:latest"
     command: bash -c "bin/squadster start"
+    networks:
+      - default
     depends_on:
       - db
     deploy:
@@ -34,9 +44,11 @@ services:
   bot:
     image: "docker.pkg.github.com/squadster/mercury/bot:latest"
     command: sh -c "java --add-opens=java.base/jdk.internal.loader=ALL-UNNAMED -Dspring.profiles.active=release -jar /app.jar"
-    #environment:
-      #ELASTICSEARCH_HOST: "${ELASTICSEARCH_HOST}"
-      #ELASTICSEARCH_PORT: "${ELASTICSEARCH_PORT}"
+    environment: # TODO: remove
+      ELASTICSEARCH_HOST: "35.207.141.73"
+      ELASTICSEARCH_PORT: "9200"
+    networks:
+      - default
     depends_on:
       - db
     deploy:
@@ -48,6 +60,8 @@ services:
   nginx:
     image: "docker.pkg.github.com/squadster/squadster-deployment/nginx:latest"
     # build: nginx # need to redeploy image
+    networks:
+      - default
     ports:
       - target: 80
         published: 80
