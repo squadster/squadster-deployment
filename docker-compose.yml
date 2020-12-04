@@ -4,7 +4,7 @@ services:
   db:
     image: postgres:12-alpine
     volumes: # should be commented when running locally
-      - /var/lib/postgresqlrun/secrets
+      - /var/lib/postgresql
     env_file:
       - .env.db
     ports:
