@@ -4,4 +4,4 @@
 
 source .env
 
-ssh $INSTANCE_USER@$INSTANCE_IP
+docker-machine ssh $INSTANCE_NAME
