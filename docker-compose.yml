@@ -25,6 +25,9 @@ services:
   bot:
     image: "docker.pkg.github.com/$GITHUB_ORGANIZATION/$BOT_GITHUB_REPO/$BOT_GITHUB_PACKAGE:$RELEASE_VERSION"
     command: sh -c "java --add-opens=java.base/jdk.internal.loader=ALL-UNNAMED -Dspring.profiles.active=release -jar /app.jar"
+    environment:
+      ELASTICSEARCH_HOST: "${ELASTICSEARCH_HOST}"
+      ELASTICSEARCH_PORT: "${ELASTICSEARCH_PORT}"
     depends_on:
       - db
 
