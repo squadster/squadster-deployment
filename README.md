@@ -1,23 +1,34 @@
 # Squadster deployment
 
-This repo is for deployment latest Squadster images.<br />
-It delivers files to target server and builds images from [GitHub registry](https://github.com/orgs/squadster/packages).
+This is a Squadster deployment repo.<br />
+It uses Docker Swarm and [GitHub Registry](https://github.com/orgs/squadster/packages) for deployment.
 
 Check out [API repo](https://github.com/squadster/squadster-api) for more info about application.
 
 # Usage
 
-First of all copy default environment with `cp .env.sample .env` and configure missing values (and others if needed).<br />
-After that add SSH key file. It should be named as in corresponding env variable.
+First of all you need to run `./scripts/create_machine.sh` to configure docker-machine, install docker there and enable the swarm mode.
+
+Then copy default local environment and database settings:
+
+```bash
+cp .env.sample .env
+cp .env.db.sample .env.db
+```
+
+Configure missing values and it's ready to go!<br />
 
 ## Deployment
 
-Now it should be ready to go, run `./scripts/deploy.sh` to deliver compose to target instance and run application there.<br />
-This script assumes that instance is running under Debian-like Linux. It'll install docker if it isn't installed.
+Run `./scripts/deploy.sh` to deliver build files to the target instance and launch/update swarm there.<br />
 
-## Run console
+## Access scripts
 
-To run iex shell on the server you should run `./scripts/console.sh`.
+There are several scripts to simplify application access
+
+* To connect to the instance via SSH `./scripts/s.sh`.
+* To run iex shell on the server run `./scripts/iex.sh`.
+* To connect directly to the database run `./scripts/psql.sh`.
 
 # License
 
