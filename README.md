@@ -21,6 +21,7 @@ Configure missing values and it's ready to go!<br />
 ## Deployment
 
 Run `./scripts/deploy.sh` to deliver build files to the target instance and launch/update swarm there.<br />
+If you need to rebuild and push the nginx image use `./scripts/rebuild_nginx.sh`
 
 ## Access scripts
 
