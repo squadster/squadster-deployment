@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# This script deploys application from github registry to target instance
+# Deploy application from the github registry to the target instance
 
 # execute command on server
 execute() {
-  ssh $INSTANCE_USER@$INSTANCE_IP -T $@
+  docker-machine ssh $INSTANCE_NAME $@
 }
 
 # send file to app directory
 transfer() {
-  scp -r $1 $INSTANCE_USER@$INSTANCE_IP:$2
+  docker-machine scp --recursive $1 $INSTANCE_NAME:$2
 }
 
 source .env
@@ -19,7 +19,6 @@ app_dir=squadster/$APP_ENV
 execute "mkdir -p $app_dir"
 execute "chmod 777 $app_dir"
 transfer docker-compose.yml $app_dir
-transfer .env $app_dir
 transfer .env.db $app_dir
 transfer nginx $app_dir
 
