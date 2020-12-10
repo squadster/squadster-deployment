@@ -1,5 +1,7 @@
 # Squadster deployment
 
+[![License](https://img.shields.io/github/license/squadster/squadster-deployment.svg)](https://github.com/squadster/squadster-deployment/blob/master/LICENSE)
+
 This is a Squadster deployment repo.<br />
 It uses Docker Swarm and [GitHub Registry](https://github.com/orgs/squadster/packages) for deployment.
 
@@ -30,7 +32,3 @@ There are several scripts to simplify application access
 * To connect to the instance via SSH `./scripts/s.sh`.
 * To run iex shell on the server run `./scripts/iex.sh`.
 * To connect directly to the database run `./scripts/psql.sh`.
-
-# License
-
-[MIT](LICENSE)
