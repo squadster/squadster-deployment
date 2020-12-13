@@ -1,3 +1,5 @@
 .env
 .env.db
 squadster.pem
+
+log
