@@ -1,4 +1,4 @@
-namespace :scp do
+namespace :upload do
   desc "Uploads .env.db to the release directory"
   task :env_db do
     on roles(:all) do
