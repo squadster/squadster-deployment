@@ -1,1 +1,1 @@
-# no special settings for production yet
+set :keep_releases, 5

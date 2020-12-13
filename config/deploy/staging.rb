@@ -1,1 +1,1 @@
-# no special settings for staging yet
+set :keep_releases, 3

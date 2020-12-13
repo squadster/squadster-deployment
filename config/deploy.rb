@@ -11,8 +11,8 @@ set :keep_releases, 5
 
 set :host, ENV['INSTANCE_IP']
 set :user, ENV['INSTANCE_USER']
-set :postgres_user, ENV['POSTGRES_USER']
 set :postgres_db, ENV['POSTGRES_DB']
+set :postgres_user, ENV['POSTGRES_USER']
 
 set :deploy_to, "/home/#{fetch(:user)}/squadster/#{fetch(:stage)}"
 set :branch, 'release'
