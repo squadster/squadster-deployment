@@ -35,7 +35,7 @@ Then configure missing values and it's ready to go!<br />
 Run `cap <stage> deploy` to deliver build files to the target instance and launch/update swarm there.
 Availavle stages are `production`, `staging` and `local`. The last one will run everything locally.
 
-If you need to manually rebuild and push the nginx image use `./bin/rebuild_nginx.sh`, it will also build it on Travis.
+If you need to manually rebuild and push the nginx image use `./bin/build_nginx.sh`, it will also build it on Travis.
 
 ## Access tasks
 

@@ -1,0 +1,17 @@
+dist: focal # Ubuntu 20.04
+language: minimal
+
+notifications:
+  email:
+    if: branch = release
+    on_success: never
+    on_failure: always
+
+stages:
+  - name: build
+    if: branch = release
+
+jobs:
+  include:
+    - stage: build
+      script: ./bin/build_nginx.sh
