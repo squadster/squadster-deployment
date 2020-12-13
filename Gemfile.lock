@@ -66,6 +66,8 @@ GEM
     sshkit (1.21.1)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    sshkit-interactive (0.3.0)
+      sshkit (~> 1.12)
     thor (1.0.1)
     tzinfo (2.0.3)
       concurrent-ruby (~> 1.0)
@@ -77,6 +79,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano (~> 3.14)
   dotenv-rails
+  sshkit-interactive
 
 BUNDLED WITH
    2.1.4

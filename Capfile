@@ -1,6 +1,8 @@
 require "capistrano/setup"
 require "capistrano/deploy"
 require "capistrano/scm/git"
+
+require 'sshkit/interactive'
 require 'dotenv'
 
 # Load custom tasks from `lib/capistrano/tasks`

@@ -1,1 +1,1 @@
-# staging relates settings here
+# no special settings for staging yet
