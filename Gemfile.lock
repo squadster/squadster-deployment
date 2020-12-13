@@ -28,6 +28,8 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    capistrano-locally (0.2.6)
+      capistrano (~> 3.0)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
     dotenv (2.7.6)
@@ -78,6 +80,7 @@ PLATFORMS
 
 DEPENDENCIES
   capistrano (~> 3.14)
+  capistrano-locally
   dotenv-rails
   sshkit-interactive
 

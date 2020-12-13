@@ -1,7 +1,7 @@
 lock "~> 3.14.1"
 
-# use staging env for stage independent tasks like `cap -T`
-postfix = fetch(:stage).empty? ? 'staging' : fetch(:stage)
+# use local env for stage independent tasks like `cap -T`
+postfix = fetch(:stage).empty? ? 'local' : fetch(:stage)
 Dotenv.load(".env.#{postfix}")
 Dotenv.load(".env.db")
 

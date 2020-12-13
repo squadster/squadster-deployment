@@ -1,6 +1,7 @@
 require "capistrano/setup"
 require "capistrano/deploy"
 require "capistrano/scm/git"
+require 'capistrano/locally'
 
 require 'sshkit/interactive'
 require 'dotenv'
