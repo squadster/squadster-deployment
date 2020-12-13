@@ -4,7 +4,7 @@ namespace :docker do
     task :deploy do
       on roles(:all) do
         within release_path do
-          execute :docker, 'stack', 'deploy', 'squadster_production', '--compose-file=docker-compose.yml'
+          execute :docker, 'stack', 'deploy', "squadster_#{fetch(:stage)}", '--compose-file=docker-compose.yml'
         end
       end
     end
