@@ -11,10 +11,8 @@ namespace :access do
   desc 'Connect to the instance'
   task :ssh do
     on roles(:app) do
-      within current_path do
-        run_interactively primary(:app) do
-          execute :bash
-        end
+      run_interactively primary(:app) do
+        execute :bash, "-c 'cd #{current_path}; exec bash'"
       end
     end
   end
