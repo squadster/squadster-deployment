@@ -64,3 +64,17 @@ services:
     depends_on:
       - api
       - front
+
+  # autoupdate services when their base image is refreshed
+  # https://github.com/djmaze/shepherd
+  shepherd:
+    image: mazzolino/shepherd
+    environment:
+      - IMAGE_AUTOCLEAN_LIMIT=2
+      - WITH_REGISTRY_AUTH=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      placement:
+        constraints:
+        - node.role == manager
