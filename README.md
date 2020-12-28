@@ -1,7 +1,7 @@
 # Squadster deployment
 
 [![License](https://img.shields.io/github/license/squadster/squadster-deployment.svg)](https://github.com/squadster/squadster-deployment/blob/master/LICENSE)
-[![Site status](https://img.shields.io/website?down_color=red&down_message=Offline&up_color=green&up_message=Up&url=http%3A%2F%2Fsquadster.wtf)](http://squadster.wtf)
+[![Site status](https://img.shields.io/website?down_color=red&down_message=Offline&up_color=green&up_message=Up&url=http%3A%2F%2Fsquadster.wtf)](https://squadster.wtf)
 
 This is a Squadster deployment repo.<br />
 It uses Docker Swarm and Capistrano for deployment.
