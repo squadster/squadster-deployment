@@ -13,9 +13,6 @@ services:
       - /var/lib/postgresql
     networks:
       - default
-    ports:
-      - target: 5432
-        published: 5432
 
   front:
     image: "docker.pkg.github.com/squadster/squadster-frontend/frontend-release:latest"
@@ -68,7 +65,7 @@ services:
       - front
     environment:
       TZ: Etc/UTC
-      LETSENCRYPT: 'true' # Set to true for the first time only
+      LETSENCRYPT: 'true'
       LE_EMAIL: artoriousso@gmail.com
       LE_FQDN: squadster.wtf
       SSL_CERT: le-crt.pem
@@ -84,7 +81,7 @@ services:
       - WITH_REGISTRY_AUTH=true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /home/artoriousso/.docker/config.json:/root/.docker/config.json
+      - /home/artoriousso/.docker/config.json:/root/.docker/config.json # NOTE: host path can be different on other servers
     deploy:
       placement:
         constraints:
