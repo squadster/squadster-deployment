@@ -74,6 +74,7 @@ services:
       - WITH_REGISTRY_AUTH=true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /home/artoriousso/.docker/config.json:/root/.docker/config.json
     deploy:
       placement:
         constraints:
