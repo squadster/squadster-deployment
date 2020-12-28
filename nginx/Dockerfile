@@ -1,4 +1,4 @@
-FROM nginx:1.17.5
+FROM umputun/nginx-le:latest
 
 RUN mkdir /log
 
