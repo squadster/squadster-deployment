@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pg-dep
+  labels:
+    app: pgdb
+spec:
+  replicas: 1
+  selector:
+    matchLables:
+      app: pgdb
+  template:
+    metadata:
+      labels:
+        app: pgdb
+    spec:
+      containers:
+      - name: pgdb
+        image: postgres
+        ports:
+        - containerPort: 5432
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pg-secret
+              key: pg-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgdb-service
+spec:
+  selector:
+    app: pgdb
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
